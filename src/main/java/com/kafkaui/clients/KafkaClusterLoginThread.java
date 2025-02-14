@@ -1,8 +1,12 @@
 package com.kafkaui.clients;
 
+import com.kafkaui.context.BrokerContext;
+import com.kafkaui.context.StageContext;
 import com.kafkaui.models.ClusterLoginModel;
+import com.kafkaui.ui.components.ErrorWindow;
 import com.kafkaui.ui.pages.OverviewPage;
 import javafx.application.Platform;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.apache.kafka.clients.admin.*;
 import javafx.scene.control.Label;
@@ -13,11 +17,9 @@ import java.util.Properties;
 
 public class KafkaClusterLoginThread extends Task {
     private final ClusterLoginModel clusterLoginModel;
-    private final Label labelContext;
 
-    public KafkaClusterLoginThread(ClusterLoginModel clusterLoginModel, Label labelContext) {
+    public KafkaClusterLoginThread(ClusterLoginModel clusterLoginModel) {
         this.clusterLoginModel = clusterLoginModel;
-        this.labelContext = labelContext;
     }
 
     @Override
@@ -38,16 +40,16 @@ public class KafkaClusterLoginThread extends Task {
             if (exception == null) {
                 Platform.runLater(() -> {
                     try {
-                        OverviewPage.show(nodes);
-                        Stage toClose = (Stage) labelContext.getScene().getWindow();
-                        toClose.close();
+                        BrokerContext.fillBrokers(nodes);
+                        OverviewPage.show();
+                        StageContext.CLUSTER_LOGIN.close();
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
                 });
             } else {
                 Platform.runLater(() -> {
-                    labelContext.setText(exception.getMessage());
+                    ErrorWindow.popErrorWindow(exception.getMessage());
                 });
             }
         });

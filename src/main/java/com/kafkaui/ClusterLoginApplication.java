@@ -1,5 +1,6 @@
 package com.kafkaui;
 
+import com.kafkaui.context.StageContext;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,6 +17,7 @@ public class ClusterLoginApplication extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
+        StageContext.CLUSTER_LOGIN = stage;
     }
 
     public static void main(String[] args) {

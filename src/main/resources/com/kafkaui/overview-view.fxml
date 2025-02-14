@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.kafkaui.controllers.OverviewController">
-<TableView fx:id="table">
-    <columns>
-        <TableColumn text="ID" fx:id="idColumn" prefWidth="200"/>
-        <TableColumn text="IP" fx:id="hostColumn" prefWidth="200"/>
-        <TableColumn text="Port" fx:id="portColumn" prefWidth="100"/>
-    </columns>
-</TableView>
+      fx:controller="com.kafkaui.controllers.OverviewController"
+      spacing="20" alignment="CENTER"
+      styleClass="main-container">
+
+    <!-- Title: Kafka UI -->
+    <Label text="Kafka UI" styleClass="title-label" />
+
+    <!-- Brokers Button -->
+    <Button text="Brokers" styleClass="option-button, brokers-button" onAction="#handleBrokersAction" />
+
+    <!-- Topics Button -->
+    <Button text="Topics" styleClass="option-button, topics-button" onAction="#handleTopicsAction" />
+
+    <!-- Connectors Button -->
+    <Button text="Connectors" styleClass="option-button, connectors-button" onAction="#handleConnectorsAction" />
+
+    <!-- Consumer Groups Button -->
+    <Button text="Consumer Groups" styleClass="option-button, consumer-groups-button" onAction="#handleConsumerGroupsAction" />
+
+    <stylesheets>
+        <URL value="@styles.css" />
+    </stylesheets>
 </VBox>

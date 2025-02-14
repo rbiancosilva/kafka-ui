@@ -2,6 +2,7 @@ package com.kafkaui.ui.pages;
 
 import com.kafkaui.ClusterLoginApplication;
 import com.kafkaui.context.BrokerContext;
+import com.kafkaui.context.StageContext;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -11,8 +12,7 @@ import java.io.IOException;
 import java.util.Collection;
 
 public class OverviewPage {
-    public static void show(Collection<Node> nodes) throws IOException {
-        BrokerContext.fillBrokers(nodes);
+    public static void show() throws IOException {
         Stage stage = new Stage();
         stage.setTitle("Kafka UI");
         stage.setResizable(false);
@@ -20,5 +20,6 @@ public class OverviewPage {
         Scene scene = new Scene(fxmlLoader.load(), 1080, 760);
         stage.setScene(scene);
         stage.show();
+        StageContext.OVERVIEW = stage;
     }
 }

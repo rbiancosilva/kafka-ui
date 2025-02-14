@@ -1,0 +1,54 @@
+/* Main container styling */
+.main-container {
+    -fx-background-color: #f4f4f4;
+    -fx-padding: 40px;
+}
+
+/* Title Label Styling */
+.title-label {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333; /* Dark gray color */
+    -fx-padding: 0 0 20px 0; /* Add space below the title */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 0); /* Subtle shadow */
+}
+
+/* Base button styling */
+.option-button {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-padding: 15px 30px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);
+    -fx-min-height: 120px;
+    -fx-min-width: 900px;
+}
+
+/* Hover effect for buttons */
+.option-button:hover {
+    -fx-opacity: 0.9;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 15, 0, 0, 0);
+}
+
+/* Brokers button styling */
+.brokers-button {
+    -fx-background-color: #FF6F61; /* Coral */
+}
+
+/* Topics button styling */
+.topics-button {
+    -fx-background-color: #6B5B95; /* Purple */
+}
+
+/* Connectors button styling */
+.connectors-button {
+    -fx-background-color: #88B04B; /* Green */
+}
+
+/* Consumer Groups button styling */
+.consumer-groups-button {
+    -fx-background-color: #FFA500; /* Orange */
+}
