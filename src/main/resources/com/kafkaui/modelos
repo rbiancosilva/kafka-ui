@@ -1,0 +1,7 @@
+<TableView fx:id="table" prefWidth="600.0" prefHeight="400.0">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID" prefWidth="200.0"/>
+            <TableColumn fx:id="hostColumn" text="Host" prefWidth="200.0"/>
+            <TableColumn fx:id="portColumn" text="Port" prefWidth="200.0"/>
+        </columns>
+</TableView>

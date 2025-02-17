@@ -1,31 +1,23 @@
 package com.kafkaui.context;
 
-import com.kafkaui.models.BrokerModel;
 import org.apache.kafka.common.Node;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 public class BrokerContext {
-    private static final ArrayList<BrokerModel> brokers = new ArrayList<>();
+    private static Collection<Node> brokers = new ArrayList<>();
 
-    public static void addBroker(BrokerModel broker) {
+    public static void addBroker(Node broker) {
         brokers.add(broker);
     }
 
-    public static ArrayList<BrokerModel> getBrokers() {
+    public static Collection<Node> getBrokers() {
         return brokers;
     }
 
-    public static void fillBrokers(Collection<Node> nodes) {
-        for (Node node : nodes) {
-            BrokerModel broker = new BrokerModel(
-                    node.id(),
-                    node.host(),
-                    node.port()
-            );
-            brokers.add(broker);
-        }
+    public static void setBrokers(Collection<Node> nodes) {
+        brokers = nodes;
     }
 
 }

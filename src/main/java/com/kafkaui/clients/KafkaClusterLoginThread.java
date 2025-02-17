@@ -1,6 +1,7 @@
 package com.kafkaui.clients;
 
 import com.kafkaui.context.BrokerContext;
+import com.kafkaui.context.ClientContext;
 import com.kafkaui.context.StageContext;
 import com.kafkaui.models.ClusterLoginModel;
 import com.kafkaui.ui.components.ErrorWindow;
@@ -40,9 +41,10 @@ public class KafkaClusterLoginThread extends Task {
             if (exception == null) {
                 Platform.runLater(() -> {
                     try {
-                        BrokerContext.fillBrokers(nodes);
+                        BrokerContext.setBrokers(nodes);
                         OverviewPage.show();
                         StageContext.CLUSTER_LOGIN.close();
+                        ClientContext.setAdminClient(adminClient);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

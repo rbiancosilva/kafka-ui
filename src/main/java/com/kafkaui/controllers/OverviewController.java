@@ -17,15 +17,15 @@ public class OverviewController {
     @FXML
     public TableColumn portColumn;
 
-//    @FXML
-//    public void initialize() {
-//        BrokerTable.fillTable(
-//                table,
-//                idColumn,
-//                hostColumn,
-//                portColumn
-//        );
-//    }
+    @FXML
+    public void initialize() {
+        BrokerTable.fillTable(
+                table,
+                idColumn,
+                hostColumn,
+                portColumn
+        );
+    }
 
     @FXML
     public void handleBrokersAction(ActionEvent actionEvent) {
