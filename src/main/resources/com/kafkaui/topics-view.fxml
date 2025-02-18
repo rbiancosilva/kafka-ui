@@ -13,8 +13,7 @@
     <TableView fx:id="table" prefWidth="400.0" prefHeight="400.0">
         <columns>
             <TableColumn fx:id="idColumn" text="ID" prefWidth="200.0"/>
-            <TableColumn fx:id="nameColumn" text="Host" prefWidth="200.0"/>
+            <TableColumn fx:id="nameColumn" text="Name" prefWidth="200.0"/>
         </columns>
     </TableView>
-
 </VBox>

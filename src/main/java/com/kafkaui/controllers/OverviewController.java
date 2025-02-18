@@ -25,7 +25,6 @@ public class OverviewController {
 
     @FXML
     public void handleTopicsAction() {
-        ErrorWindow.popErrorWindow("Teste");
         ListTopicsThread listTopicsThread = new ListTopicsThread();
         new Thread(listTopicsThread).start();
     }

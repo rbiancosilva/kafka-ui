@@ -1,15 +1,12 @@
 package com.kafkaui.services;
 
-import com.kafkaui.ui.components.BrokerTable;
 import com.kafkaui.ui.components.TopicTable;
 import org.apache.kafka.clients.admin.TopicListing;
-import org.apache.kafka.common.Node;
-import org.apache.kafka.common.internals.Topic;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class TopicListService {
+public class TopicService {
 
     public static ArrayList<TopicTable.TopicProps> modelPropsMapper(Collection<TopicListing> topics) {
         ArrayList<TopicTable.TopicProps> modelProps = new ArrayList<>();
@@ -22,4 +19,6 @@ public class TopicListService {
         }
         return modelProps;
     }
+
+
 }

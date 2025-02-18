@@ -1,17 +1,19 @@
 package com.kafkaui.ui.components;
 
-import com.kafkaui.context.BrokerContext;
+import com.kafkaui.context.StageContext;
 import com.kafkaui.context.TopicListContext;
-import com.kafkaui.services.BrokerService;
-import com.kafkaui.services.TopicListService;
+import com.kafkaui.services.TopicService;
+import com.kafkaui.threads.DetailTopicThread;
+import com.kafkaui.ui.pages.TopicDetailPage;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import org.apache.kafka.clients.admin.TopicListing;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class TopicTable {
@@ -20,6 +22,22 @@ public class TopicTable {
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
 
         table.setItems(getTopicProps());
+
+        table.setRowFactory(tv -> {
+            TableRow<TopicProps> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (!row.isEmpty())) {
+                    try {
+                        TopicProps topic = row.getItem();
+                        DetailTopicThread detailTopicThread = new DetailTopicThread(topic.getName());
+                        new Thread(detailTopicThread).start();
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            });
+            return row;
+        });
     }
 
     public static class TopicProps {
@@ -42,7 +60,7 @@ public class TopicTable {
     }
 
     private static ObservableList<TopicTable.TopicProps> getTopicProps() {
-        ArrayList<TopicTable.TopicProps> topicList = TopicListService.modelPropsMapper(TopicListContext.gi().getTopics());
+        ArrayList<TopicTable.TopicProps> topicList = TopicService.modelPropsMapper(TopicListContext.gi().getTopics());
         return FXCollections.observableArrayList(topicList);
     }
 }
