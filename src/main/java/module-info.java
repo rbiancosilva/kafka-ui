@@ -15,5 +15,7 @@ module com.kafkaui {
     opens com.kafkaui to javafx.fxml;
     exports com.kafkaui;
     exports com.kafkaui.controllers;
+    exports com.kafkaui.models;
+    exports com.kafkaui.ui.components;
     opens com.kafkaui.controllers to javafx.fxml;
 }

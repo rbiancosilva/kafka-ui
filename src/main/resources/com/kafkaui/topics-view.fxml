@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.kafkaui.controllers.TopicsController"
+            prefHeight="400.0" prefWidth="600.0">
+    <TableView fx:id="table" prefWidth="400.0" prefHeight="400.0">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID" prefWidth="200.0"/>
+            <TableColumn fx:id="nameColumn" text="Name" prefWidth="200.0"/>
+        </columns>
+    </TableView>
+</VBox>

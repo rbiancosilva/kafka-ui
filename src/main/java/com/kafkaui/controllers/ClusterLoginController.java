@@ -3,10 +3,12 @@ package com.kafkaui.controllers;
 import com.kafkaui.clients.KafkaClusterLoginThread;
 import com.kafkaui.models.ClusterLoginModel;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import org.apache.kafka.clients.admin.DescribeClusterResult;
 
 import java.util.concurrent.ExecutionException;
@@ -24,8 +26,7 @@ public class ClusterLoginController {
     public RadioButton authenticationRadio;
     @FXML
     public Button helloButton;
-    @FXML
-    private Label welcomeText;
+
 
     @FXML
     public void initialize() {
@@ -43,9 +44,9 @@ public class ClusterLoginController {
             clusterModel.setUser(saslUsername.getText());
             clusterModel.setPass(saslPassword.getText());
         }
-        KafkaClusterLoginThread kafkaClusterLogin = new KafkaClusterLoginThread(clusterModel, welcomeText);
+        KafkaClusterLoginThread kafkaClusterLogin = new KafkaClusterLoginThread(clusterModel);
         new Thread(kafkaClusterLogin).start();
-        helloButton.setDisable(false);
+        helloButton.setDisable(true);
     }
 
     @FXML
