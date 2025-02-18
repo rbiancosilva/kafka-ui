@@ -46,7 +46,7 @@ public class ClusterLoginController {
         }
         KafkaClusterLoginThread kafkaClusterLogin = new KafkaClusterLoginThread(clusterModel);
         new Thread(kafkaClusterLogin).start();
-        helloButton.setDisable(false);
+        helloButton.setDisable(true);
     }
 
     @FXML

@@ -41,10 +41,10 @@ public class KafkaClusterLoginThread extends Task {
             if (exception == null) {
                 Platform.runLater(() -> {
                     try {
-                        BrokerContext.setBrokers(nodes);
+                        BrokerContext.gi().setBrokers(nodes);
                         OverviewPage.show();
                         StageContext.CLUSTER_LOGIN.close();
-                        ClientContext.setAdminClient(adminClient);
+                        ClientContext.gi().setAdminClient(adminClient);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

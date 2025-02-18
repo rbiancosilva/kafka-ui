@@ -6,18 +6,29 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class BrokerContext {
-    private static Collection<Node> brokers = new ArrayList<>();
+    private Collection<Node> brokers = new ArrayList<>();
 
-    public static void addBroker(Node broker) {
+    private BrokerContext() {}
+
+    private static BrokerContext instance;
+
+    public static BrokerContext gi() {
+        if (instance == null) {
+            instance = new BrokerContext();
+        }
+        return instance;
+    }
+
+    public void addBroker(Node broker) {
         brokers.add(broker);
     }
 
-    public static Collection<Node> getBrokers() {
+    public Collection<Node> getBrokers() {
         return brokers;
     }
 
-    public static void setBrokers(Collection<Node> nodes) {
-        brokers = nodes;
+    public void setBrokers(Collection<Node> nodes) {
+        this.brokers = nodes;
     }
 
 }

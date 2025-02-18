@@ -46,7 +46,7 @@ public class BrokerTable {
     }
 
     private static ObservableList<BrokerProps> getBrokerProps() {
-        ArrayList<BrokerProps> brokerList = BrokerService.modelPropsMapper(BrokerContext.getBrokers());
+        ArrayList<BrokerProps> brokerList = BrokerService.modelPropsMapper(BrokerContext.gi().getBrokers());
         return FXCollections.observableArrayList(brokerList);
     }
 
