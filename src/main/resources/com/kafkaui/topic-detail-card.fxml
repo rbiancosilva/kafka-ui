@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:id="cardRoot"
+            fx:controller="com.kafkaui.controllers.TopicDetailCardController"
+            prefHeight="200.0" prefWidth="750.0">
+    <VBox
+            style="-fx-min-width: 250; -fx-background-color: gray;-fx-alignment: center; -fx-label-padding: 10"
+    >
+        <Label fx:id="partitionLabel"/>
+        <Label fx:id="leaderLabel"/>
+        <Label fx:id="leaderHost"/>
+        <Label fx:id="leaderPort"/>
+    </VBox>
+    <VBox
+    style="-fx-min-width: 250; -fx-alignment: center"
+    >
+        <Label text="Replicas"/>
+        <TableView fx:id="tableOne">
+            <columns>
+                <TableColumn fx:id="idColumnOne" text="ID" prefWidth="83"/>
+                <TableColumn fx:id="hostColumnOne" text="Name" prefWidth="83"/>
+                <TableColumn fx:id="portColumnOne" text="Name" prefWidth="83"/>
+            </columns>
+        </TableView>
+    </VBox>
+    <VBox
+            style="-fx-min-width: 250; -fx-alignment: center"
+    >
+        <Label text="In Sync Replicas"/>
+        <TableView fx:id="tableTwo">
+            <columns>
+                <TableColumn fx:id="idColumnTwo" text="ID" prefWidth="83"/>
+                <TableColumn fx:id="hostColumnTwo" text="Name" prefWidth="83"/>
+                <TableColumn fx:id="portColumnTwo" text="Name" prefWidth="83"/>
+            </columns>
+        </TableView>
+    </VBox>
+</HBox>

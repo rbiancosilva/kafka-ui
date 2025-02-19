@@ -6,9 +6,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx"
+<ScrollPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.kafkaui.controllers.TopicDetailController"
             prefHeight="400.0" prefWidth="600.0">
-
-</VBox>
+    <FlowPane
+    fx:id="testContainer"
+    hgap="10"
+    vgap="10"
+    >
+    </FlowPane>
+</ScrollPane>
