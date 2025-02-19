@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TopicDetailContext {
+    private TopicDescription currentTopic;
     private final Map<String, Map<LocalDateTime, TopicDescription>> topicDetailMap = new HashMap<>();
     private static TopicDetailContext instance;
 
@@ -23,12 +24,26 @@ public class TopicDetailContext {
     }
 
     public boolean isCached(String topicName) {
-        if (topicDetailMap != null && topicDetailMap.containsKey(topicName)) {
+        if (topicDetailMap.containsKey(topicName)) {
             Map<LocalDateTime, TopicDescription> map = topicDetailMap.get(topicName);
             LocalDateTime lastUpdate = map.keySet().stream().findFirst().get();
             return lastUpdate.isAfter(LocalDateTime.now().minusMinutes(3));
         }
         return false;
+    }
+
+    public TopicDescription getCurrentTopic() {
+        return currentTopic;
+    }
+
+    public void setCurrentTopic(String topicName) {
+        Map<LocalDateTime, TopicDescription> map = topicDetailMap.get(topicName);
+        TopicDescription topic = map.values().stream().findFirst().get();
+        this.currentTopic = topic;
+    }
+
+    public void setCurrentTopic(TopicDescription topic) {
+        this.currentTopic = topic;
     }
 
     public void addToContext(String topicName, TopicDescription topicDescription) {
