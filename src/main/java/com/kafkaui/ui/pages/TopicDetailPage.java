@@ -16,9 +16,6 @@ import java.util.Objects;
 public class TopicDetailPage {
     public static void show() throws IOException {
         Stage stage = new Stage();
-        stage.setOnHidden(e -> {
-            TopicTable.topicTableContext.setDisable(false);
-        });
         stage.setTitle(TopicDetailContext.gi().getCurrentTopic().name() + " - Partitions");
         Parent root = FXMLLoader.load(Objects.requireNonNull(ClusterLoginApplication.class.getResource("topic-details-container.fxml")));
         Scene scene = new Scene(root, 750, 400);

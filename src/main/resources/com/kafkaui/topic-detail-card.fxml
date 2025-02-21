@@ -11,14 +11,25 @@
             fx:id="cardRoot"
             fx:controller="com.kafkaui.controllers.TopicDetailCardController"
             prefHeight="200.0" prefWidth="750.0">
-    <VBox
-            style="-fx-min-width: 250; -fx-background-color: gray;-fx-alignment: center; -fx-label-padding: 10"
+    <HBox
+            style="-fx-min-width: 250"
     >
-        <Label fx:id="partitionLabel"/>
-        <Label fx:id="leaderLabel"/>
-        <Label fx:id="leaderHost"/>
-        <Label fx:id="leaderPort"/>
-    </VBox>
+        <VBox
+                style="-fx-min-width: 125;-fx-alignment: center_left"
+        >
+            <Label fx:id="partitionLabel"/>
+            <Label fx:id="leaderLabel"/>
+            <Label fx:id="leaderHost"/>
+            <Label fx:id="leaderPort"/>
+        </VBox>
+        <VBox
+                style="-fx-min-width: 125;-fx-alignment: center"
+        >
+            <Button fx:id="consumeButton" onAction="#onConsumeButtonClick" text="C"/>
+            <Button fx:id="produceButton" onAction="#onProduceButtonClick" text="P"/>
+        </VBox>
+    </HBox>
+
     <VBox
     style="-fx-min-width: 250; -fx-alignment: center"
     >

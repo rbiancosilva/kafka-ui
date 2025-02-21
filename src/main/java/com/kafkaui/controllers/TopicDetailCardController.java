@@ -1,7 +1,10 @@
 package com.kafkaui.controllers;
 
+import com.kafkaui.threads.ConsumePartitionThread;
+import com.kafkaui.threads.ProducePartitionThread;
 import com.kafkaui.ui.components.BrokerTable;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -15,8 +18,6 @@ public class TopicDetailCardController {
     public TableColumn idColumnOne;
     @FXML
     public TableColumn hostColumnOne;
-    @FXML
-    public Label label;
     @FXML
     public TableView tableTwo;
     @FXML
@@ -36,10 +37,17 @@ public class TopicDetailCardController {
     @FXML
     public Label leaderPort;
     @FXML
+    public Button consumeButton;
+    @FXML
+    public Button produceButton;
+    @FXML
     private HBox cardRoot;
 
 
+    private TopicPartitionInfo topicPartitionInfo;
+
     public void setCardData(TopicPartitionInfo topicPartitionInfo) {
+        this.topicPartitionInfo = topicPartitionInfo;
         partitionLabel.setText("Partition: " + topicPartitionInfo.partition());
         leaderLabel.setText("Leader ID: " + topicPartitionInfo.leader().id());
         leaderHost.setText("Leader host: " + topicPartitionInfo.leader().host());
@@ -62,5 +70,25 @@ public class TopicDetailCardController {
 
     public HBox getCardRoot() {
         return cardRoot;
+    }
+
+    @FXML
+    public void onProduceButtonClick() {
+        ProducePartitionThread producePartitionThread = new ProducePartitionThread(topicPartitionInfo);
+        new Thread(producePartitionThread).start();
+    }
+
+    @FXML
+    public void onConsumeButtonClick() {
+        ConsumePartitionThread consumePartitionThread = new ConsumePartitionThread(topicPartitionInfo);
+        new Thread(consumePartitionThread).start();
+    }
+
+    public TopicPartitionInfo getTopicPartitionInfo() {
+        return topicPartitionInfo;
+    }
+
+    public void setTopicPartitionInfo(TopicPartitionInfo topicPartitionInfo) {
+        this.topicPartitionInfo = topicPartitionInfo;
     }
 }
